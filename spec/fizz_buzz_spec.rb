@@ -16,7 +16,7 @@ describe FizzBuzz do
       end
     end
 
-    context "should return Fizz if it's a multiple of 3" do
+    context "should return Fizz if it's a multiple of 3 skipping multiple of 5" do
       it "should be eq Fizz" do
         expect(FizzBuzz.print(3)).to eq("Fizz")
       end
@@ -30,7 +30,7 @@ describe FizzBuzz do
       end
     end
 
-    context "should return Buzz if it's a multiple of 5" do
+    context "should return Buzz if it's a multiple of 5 skipping multiple of 3" do
       it "should be eq Buzz" do
         expect(FizzBuzz.print(5)).to eq("Buzz")
       end
@@ -40,6 +40,20 @@ describe FizzBuzz do
           next if value % 3 == 0
 
           expect(FizzBuzz.print(value)).to eq("Buzz")
+        end
+      end
+    end
+
+    context "should return FizzBuzz if it's a multiple of 3 and 5 at same time" do
+      it "should be eq FizzBuzz" do
+        expect(FizzBuzz.print(15)).to eq("FizzBuzz")
+      end
+
+      it "should be eq FizzBuzz" do
+        1.upto(100) do |value|
+          next unless (value % 3 == 0) && (value % 5 == 0)
+
+          expect(FizzBuzz.print(value)).to eq("FizzBuzz")
         end
       end
     end

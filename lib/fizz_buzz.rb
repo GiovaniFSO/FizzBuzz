@@ -1,9 +1,16 @@
 class FizzBuzz
 
   def self.print(input)
-    return "Fizz" if input % 3 == 0 && input % 5 != 0
-    return "Buzz" if input % 5 == 0
+    result = ''
+    result << 'Fizz' if divisible_by?(input, 3)
+    result << 'Buzz' if divisible_by?(input, 5)
 
-    input
+    result.empty? ? input : result
+  end
+
+  private
+
+  def self.divisible_by?(number, divisor)
+    number % divisor == 0
   end
 end
